@@ -1,0 +1,287 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>User Database</title>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"> 
+  <style>
+    /* Basic styling for the form */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #0B0C10 ;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    form {
+      background-color:  #C5C6C7;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    input[type="text"],
+    input[type="password"],
+    input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    input[type="submit"] {
+      background-color: #4caf50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <form action="/welcome" method="post">
+  <div class="container">
+    <div class="wrapper">
+      <div class="company-info"></div>
+      <div class="contact">
+        <h3>Registration form</h3>
+        {% csrf_token %}
+        <form id="contactForm">
+          <p>
+            <label>Name</label>
+            <input type="text" name="name" id="name" required>
+          </p>
+          <p>
+            <label>Email Address</label>
+            <input type="email" name="email" id="email" required>
+          </p>
+          <p>
+            <label>Username</label>
+            <input type="text" name="username" id="username" required>
+          </p>
+          <p>
+            <label>Password</label>
+            <input type="password" name="password" id="password">
+          </p>
+          <p class="full">
+            <button type="submit">Sign Up</button>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+      </div>
+    </div>
+  </div>
+  <div class="alert" style="display: none;">Submission successful!</div> <!-- Added a placeholder for the alert -->
+
+<!--   
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-analytics.js";
+    import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js"; // Import specific database functions
+    
+    const firebaseConfig = {
+  apiKey: "AIzaSyDUxuX4Ns9SlbAA_J-Wy6TYCFAvLxxKMdI",
+  authDomain: "e-waste1-4e30f.firebaseapp.com",
+  databaseURL: "https://e-waste1-4e30f-default-rtdb.firebaseio.com",
+  projectId: "e-waste1-4e30f",
+  storageBucket: "e-waste1-4e30f.appspot.com",
+  messagingSenderId: "741761976089",
+  appId: "1:741761976089:web:a4fcb61424787e6e25e788",
+  measurementId: "G-TJFVECSMBS"
+};
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const database = getDatabase(); // Get a reference to the database
+
+    // Reference to the 'messages' in the database
+    const messagesRef = ref(database, 'messages');
+
+    document.getElementById('contactForm').addEventListener('submit', submitForm);
+
+    function submitForm(e){
+      e.preventDefault();
+      const name = getInputVal('name');
+      const email = getInputVal('email');
+      const username = getInputVal('username');
+      const password = getInputVal('password');
+      saveMessage(name, email, username, password);
+  
+      document.querySelector('.alert').style.display = 'block';
+      setTimeout(function(){
+        document.querySelector('.alert').style.display = 'none';
+      }, 3000);
+  
+      document.getElementById('contactForm').reset();
+    }
+  
+    function getInputVal(id){
+      return document.getElementById(id).value;
+    }
+  
+    function saveMessage(name, email, username, password){
+      const newMessageRef = push(messagesRef); // Push a new message to the database
+      set(newMessageRef, { // Set the data for the new message
+        name: name,
+        email: email,
+        username: username,
+        password: password
+      });
+    }
+  </script>
+</body>
+</html> --> 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>User Database</title>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <style>
+    /* Basic styling for the form */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #0B0C10 ;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    form {
+      background-color:  #C5C6C7;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    input[type="text"],
+    input[type="password"],
+    input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    input[type="submit"] {
+      background-color: #4caf50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <form action="/welcome" method="post">
+  <div class="container">
+    <div class="wrapper">
+      <div class="company-info"></div>
+      <div class="contact">
+        <h3>Registration form</h3>
+        {% csrf_token %}
+        <form id="contactForm">
+          <p>
+            <label>Name</label>
+            <input type="text" name="name" id="name" required>
+          </p>
+          <p>
+            <label>Username</label>
+            <input type="text" name="username" id="username" required>
+          </p>
+          <p>
+            <label>Email Address</label>
+            <input type="email" name="email" id="email" required>
+          </p>
+          <p>
+            <label>Password</label>
+            <input type="password" name="password" id="password">
+          </p>
+          <p class="full">
+            <button type="submit">Submit</button>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+      </div>
+    </div>
+  </div>
+  <div class="alert" style="display: none;">Submission successful!</div> <!-- Added a placeholder for the alert -->
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-analytics.js";
+    import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js"; // Import specific database functions
+    
+    const firebaseConfig = {
+      apiKey: "AIzaSyDUxuX4Ns9SlbAA_J-Wy6TYCFAvLxxKMdI",
+    authDomain: "e-waste1-4e30f.firebaseapp.com",
+    databaseURL: "https://e-waste1-4e30f-default-rtdb.firebaseio.com",
+    projectId: "e-waste1-4e30f",
+    storageBucket: "e-waste1-4e30f.appspot.com",
+    messagingSenderId: "741761976089",
+    appId: "1:741761976089:web:a4fcb61424787e6e25e788",
+    measurementId: "G-TJFVECSMBS"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const database = getDatabase(); // Get a reference to the database
+
+    // Reference to the 'messages' in the database
+    const messagesRef = ref(database, 'messages');
+
+    document.getElementById('contactForm').addEventListener('submit', submitForm);
+
+    function submitForm(e){
+      e.preventDefault();
+      const name = getInputVal('name');
+      const username = getInputVal('username');
+      const email = getInputVal('email');
+      const password = getInputVal('password');
+      saveMessage(name, username, email, password);
+  
+      document.querySelector('.alert').style.display = 'block';
+      setTimeout(function(){
+        document.querySelector('.alert').style.display = 'none';
+      }, 3000);
+  
+      document.getElementById('contactForm').reset();
+    }
+  
+    function getInputVal(id){
+      return document.getElementById(id).value;
+    }
+  
+    function saveMessage(name, username, email, password){
+      const newMessageRef = push(messagesRef); // Push a new message to the database
+      set(newMessageRef, { // Set the data for the new message
+        name: name,
+        username: username,
+        email: email,
+        password: password,
+      });
+    }
+  </script>
+</body>
+</html>

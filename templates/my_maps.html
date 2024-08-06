@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<div class="search-container">
+        <form action="https://www.google.com/maps/@21.2526702,81.6415621,13.73z?entry=ttu" method="GET">
+            <label for="search" class="search-label"> </label>
+            <input type="text" id="search" name="q" class="search-input" placeholder="Enter the location" required>
+            <input type="submit" value="Search" class="search-button">
+        </form>
+    </div>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaflet Map with Search Bar</title>
+    <!-- Include Leaflet CSS and JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    
+    <!-- Include Leaflet Control Geocoder plugin -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
+</head>
+<body>
+    <div id="map" style="height: 690px;"></div>
+    <script>
+        // Initialize the map with the approximate center of India
+       var map = L.map('map').setView([20.5937, 78.9629], 5); // [latitude, longitude], zoom level
+
+        // Add OpenStreetMap tiles as the base layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+	//user location
+	if ('geolocation' in navigator) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var userMarker = L.marker([position.coords.latitude, position.coords.longitude]).addTo(map);
+                userMarker.bindPopup('Your Location').openPopup();
+            }, function (error) {
+                console.error('Error getting user location:', error.message);
+            });
+        } else {
+            console.error('Geolocation not supported in this browser.');
+        }
+
+
+        // Add a search bar using Leaflet Control Geocoder
+        var searchControl = L.Control.geocoder({
+            defaultMarkGeocode: false
+        }).on('markgeocode', function(e) {
+            // When a location is selected from the search results, center the map on that location
+            map.fitBounds(e.geocode.bbox);
+        }).addTo(map);
+
+        // Optionally, add a marker for the center of India
+        L.marker([20.5937, 78.9629]).addTo(map)
+            .bindPopup('Center of India').openPopup();
+    </script>
+</body>
+</html>
